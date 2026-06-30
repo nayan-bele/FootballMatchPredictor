@@ -42,7 +42,7 @@ def train():
         tf.keras.layers.Dense(2) 
     ])
     model.compile(optimizer='adam', loss='mse')
-    model.fit(X, y, epochs=50, batch_size=32)
+    model.fit(X, y, epochs=50, batch_size=256, verbose=2)
     model.save('score_model.keras')
     print("✅ Model trained with position-aware flags.")
 
