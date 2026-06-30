@@ -3,6 +3,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 def train():
+    # Fix for macOS Python 3.13 + TF 2.21 deadlock
+    tf.config.threading.set_inter_op_parallelism_threads(1)
+    tf.config.threading.set_intra_op_parallelism_threads(1)
+    
     conn = sqlite3.connect('football_data.db')
     df = pd.read_sql("SELECT * FROM match_results", conn)
     conn.close()
