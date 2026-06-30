@@ -36,7 +36,8 @@ def train():
     joblib.dump(scaler, 'scaler.joblib')
     
     model = tf.keras.Sequential([
-        tf.keras.layers.Dense(128, activation='relu', input_shape=(X.shape[1],)),
+        tf.keras.layers.Input(shape=(X.shape[1],)),
+        tf.keras.layers.Dense(128, activation='relu'),
         tf.keras.layers.Dropout(0.2),
         tf.keras.layers.Dense(64, activation='relu'),
         tf.keras.layers.Dense(2) 
